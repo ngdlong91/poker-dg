@@ -1,5 +1,5 @@
 {
-  "name": "poker-ts",
+  "name": "poker-dg",
   "version": "0.0.2",
   "description": "Texas Hold 'Em Poker table model with convenience features for running real games.",
   "main": "dist/index.js",
@@ -16,11 +16,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/claudijo/poker-ts.git"
+    "url": "https://github.com/decentralgames/poker-dg.git"
   },
-  "homepage": "https://github.com/claudijo/poker-ts",
+  "homepage": "https://github.com/decentralgames/poker-dg",
   "bugs": {
-    "url": "https://github.com/claudijo/poker-ts/issues"
+    "url": "https://github.com/decentralgames/poker-dg/issues"
   },
   "keywords": [
     "poker",
