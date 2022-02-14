@@ -62,6 +62,7 @@ var Dealer = /** @class */ (function () {
     function Dealer(players, button, forcedBets, deck, communityCards, numSeats) {
         if (numSeats === void 0) { numSeats = 9; }
         this._button = 0;
+        this._bigBlind = 0;
         this._bettingRound = null;
         this._handInProgress = false;
         this._roundOfBetting = community_cards_1.RoundOfBetting.PREFLOP;
@@ -173,7 +174,8 @@ var Dealer = /** @class */ (function () {
         this._roundOfBetting = community_cards_1.RoundOfBetting.PREFLOP;
         this._winners = [];
         this.collectAnte();
-        var firstAction = this.nextOrWrap(this.postBlinds());
+        this._bigBlind = this.postBlinds();
+        var firstAction = this.nextOrWrap(this._bigBlind);
         this.dealHoleCards();
         if (this._players.filter(function (player) { return player !== null && player.stack() !== 0; }).length > 1) {
             this._bettingRound = new betting_round_1.default(__spreadArray([], this._players), firstAction, this._forcedBets.blinds.big, this._forcedBets.blinds.big);
@@ -221,7 +223,7 @@ var Dealer = /** @class */ (function () {
             // Start the next betting round.
             this._roundOfBetting = community_cards_1.next(this._roundOfBetting);
             this._players = (_d = (_c = this._bettingRound) === null || _c === void 0 ? void 0 : _c.players()) !== null && _d !== void 0 ? _d : [];
-            this._bettingRound = new betting_round_1.default(__spreadArray([], this._players), this.nextOrWrap(this._button), this._forcedBets.blinds.big);
+            this._bettingRound = new betting_round_1.default(__spreadArray([], this._players), this.nextOrWrap(this._bigBlind), this._forcedBets.blinds.big);
             this.dealCommunityCards();
             assert_1.default(this._bettingRoundsCompleted === false);
         }

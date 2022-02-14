@@ -42,6 +42,7 @@ export default class Dealer {
     private readonly _button: SeatIndex = 0
     private readonly _communityCards: CommunityCards
     private readonly _holeCards: HoleCards[]
+    private _bigBlind: SeatIndex = 0
     private _players: SeatArray
     private _bettingRound: BettingRound | null = null
     private _forcedBets: ForcedBets
@@ -175,7 +176,8 @@ export default class Dealer {
         this._roundOfBetting = RoundOfBetting.PREFLOP
         this._winners = []
         this.collectAnte()
-        const firstAction = this.nextOrWrap(this.postBlinds())
+        this._bigBlind = this.postBlinds();
+        const firstAction = this.nextOrWrap(this._bigBlind)
         this.dealHoleCards()
         if (this._players.filter(player => player !== null && player.stack() !== 0).length > 1) {
             this._bettingRound = new BettingRound([...this._players], firstAction, this._forcedBets.blinds.big, this._forcedBets.blinds.big)
@@ -222,7 +224,7 @@ export default class Dealer {
             // Start the next betting round.
             this._roundOfBetting = next(this._roundOfBetting)
             this._players = this._bettingRound?.players() ?? []
-            this._bettingRound = new BettingRound([...this._players], this.nextOrWrap(this._button), this._forcedBets.blinds.big)
+            this._bettingRound = new BettingRound([...this._players], this.nextOrWrap(this._bigBlind), this._forcedBets.blinds.big)
             this.dealCommunityCards()
             assert(this._bettingRoundsCompleted === false)
         } else {

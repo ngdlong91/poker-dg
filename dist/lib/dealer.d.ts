@@ -25,6 +25,7 @@ export default class Dealer {
     private readonly _button;
     private readonly _communityCards;
     private readonly _holeCards;
+    private _bigBlind;
     private _players;
     private _bettingRound;
     private _forcedBets;
