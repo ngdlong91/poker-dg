@@ -55,6 +55,17 @@ export default class Hand {
         return hand1
     }
 
+    static getRankingOf(cards: Card[]): HandRanking {
+        assert(cards.length >= 5)
+        const hand1 = Hand._highLowHandEval(cards, false)
+        const hand2 = Hand._straightFlushEval(cards, false)
+
+        if (hand2 !== null) {
+            return findMax([hand1, hand2], Hand.compare).ranking()
+        }
+        return hand1.ranking()
+    }
+
     static compare(h1: Hand, h2: Hand): number {
         const rankingDiff = h2.ranking() - h1.ranking()
         if (rankingDiff !== 0) {
@@ -144,8 +155,12 @@ export default class Hand {
         }
     }
 
-    static _highLowHandEval(cards: Card[] /* size = 7 */): Hand {
-        assert(cards.length === 7)
+    static _highLowHandEval(cards: Card[] /* size = 7 */, isRiverCheck: boolean = true): Hand {
+        if (isRiverCheck) {
+            assert(cards.length === 7)
+        } else {
+            assert(cards.length >= 5)
+        }
 
         cards = [...cards]
 
@@ -192,8 +207,12 @@ export default class Hand {
         return new Hand(ranking, strength, handCards)
     }
 
-    static _straightFlushEval(cards: Card[]): Hand | null {
-        assert(cards.length === 7)
+    static _straightFlushEval(cards: Card[], isRiverCheck: boolean = true): Hand | null {
+        if (isRiverCheck) {
+            assert(cards.length === 7)
+        } else {
+            assert(cards.length >= 5)
+        }
 
         cards = [...cards]
         const suitedCards = Hand.getSuitedCards(cards)
