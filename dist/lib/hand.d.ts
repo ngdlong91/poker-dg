@@ -24,13 +24,14 @@ export default class Hand {
     constructor(ranking: HandRanking, strength: number, cards: Card[]);
     static create(holeCards: HoleCards, communityCards: CommunityCards): Hand;
     static of(cards: Card[]): Hand;
+    static getRankingOf(cards: Card[]): HandRanking;
     static compare(h1: Hand, h2: Hand): number;
     static nextRank(cards: Card[]): RankInfo;
     static getStrength(cards: Card[]): number;
     static getSuitedCards(cards: Card[]): Card[] | null;
     static getStraightCards(cards: Card[]): Card[] | null;
-    static _highLowHandEval(cards: Card[]): Hand;
-    static _straightFlushEval(cards: Card[]): Hand | null;
+    static _highLowHandEval(cards: Card[], isRiverCheck?: boolean): Hand;
+    static _straightFlushEval(cards: Card[], isRiverCheck?: boolean): Hand | null;
     ranking(): HandRanking;
     strength(): number;
     cards(): Card[];

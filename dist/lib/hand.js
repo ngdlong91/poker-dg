@@ -65,6 +65,15 @@ var Hand = /** @class */ (function () {
         }
         return hand1;
     };
+    Hand.getRankingOf = function (cards) {
+        assert_1.default(cards.length >= 5);
+        var hand1 = Hand._highLowHandEval(cards, false);
+        var hand2 = Hand._straightFlushEval(cards, false);
+        if (hand2 !== null) {
+            return array_1.findMax([hand1, hand2], Hand.compare).ranking();
+        }
+        return hand1.ranking();
+    };
     Hand.compare = function (h1, h2) {
         var rankingDiff = h2.ranking() - h1.ranking();
         if (rankingDiff !== 0) {
@@ -150,8 +159,14 @@ var Hand = /** @class */ (function () {
             first = last;
         }
     };
-    Hand._highLowHandEval = function (cards /* size = 7 */) {
-        assert_1.default(cards.length === 7);
+    Hand._highLowHandEval = function (cards /* size = 7 */, isRiverCheck) {
+        if (isRiverCheck === void 0) { isRiverCheck = true; }
+        if (isRiverCheck) {
+            assert_1.default(cards.length === 7);
+        }
+        else {
+            assert_1.default(cards.length >= 5);
+        }
         cards = __spreadArray([], cards);
         var rankOccurrences = new Array(13).fill(0);
         for (var _i = 0, cards_1 = cards; _i < cards_1.length; _i++) {
@@ -195,8 +210,14 @@ var Hand = /** @class */ (function () {
         var strength = Hand.getStrength(handCards);
         return new Hand(ranking, strength, handCards);
     };
-    Hand._straightFlushEval = function (cards) {
-        assert_1.default(cards.length === 7);
+    Hand._straightFlushEval = function (cards, isRiverCheck) {
+        if (isRiverCheck === void 0) { isRiverCheck = true; }
+        if (isRiverCheck) {
+            assert_1.default(cards.length === 7);
+        }
+        else {
+            assert_1.default(cards.length >= 5);
+        }
         cards = __spreadArray([], cards);
         var suitedCards = Hand.getSuitedCards(cards);
         if (suitedCards !== null) {
