@@ -105,8 +105,12 @@ export default class Hand {
 
     // If there are >=5 cards with the same suit, return a span containing all of
     // them.
-    static getSuitedCards(cards: Card[]): Card[] | null {
-        assert(cards.length === 7)
+    static getSuitedCards(cards: Card[], isRiverCheck: boolean = true): Card[] | null {
+        if (isRiverCheck) {
+            assert(cards.length === 7)
+        } else {
+            assert(cards.length >= 5)
+        }
         cards.sort(Card.compare)
         let first = 0
         for (; ;) {
@@ -215,7 +219,7 @@ export default class Hand {
         }
 
         cards = [...cards]
-        const suitedCards = Hand.getSuitedCards(cards)
+        const suitedCards = Hand.getSuitedCards(cards, isRiverCheck)
         if (suitedCards !== null) {
             const straightCards = this.getStraightCards(suitedCards)
             if (straightCards !== null) {

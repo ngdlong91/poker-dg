@@ -109,8 +109,14 @@ var Hand = /** @class */ (function () {
     };
     // If there are >=5 cards with the same suit, return a span containing all of
     // them.
-    Hand.getSuitedCards = function (cards) {
-        assert_1.default(cards.length === 7);
+    Hand.getSuitedCards = function (cards, isRiverCheck) {
+        if (isRiverCheck === void 0) { isRiverCheck = true; }
+        if (isRiverCheck) {
+            assert_1.default(cards.length === 7);
+        }
+        else {
+            assert_1.default(cards.length >= 5);
+        }
         cards.sort(card_1.default.compare);
         var first = 0;
         for (;;) {
@@ -219,7 +225,7 @@ var Hand = /** @class */ (function () {
             assert_1.default(cards.length >= 5);
         }
         cards = __spreadArray([], cards);
-        var suitedCards = Hand.getSuitedCards(cards);
+        var suitedCards = Hand.getSuitedCards(cards, isRiverCheck);
         if (suitedCards !== null) {
             var straightCards = this.getStraightCards(suitedCards);
             if (straightCards !== null) {
