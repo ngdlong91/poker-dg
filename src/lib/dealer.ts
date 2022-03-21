@@ -41,7 +41,7 @@ export enum Action {
 export default class Dealer {
     private readonly _button: SeatIndex = 0
     private readonly _communityCards: CommunityCards
-    private readonly _holeCards: HoleCards[]
+    private _holeCards: HoleCards[]
     private _players: SeatArray
     private _bettingRound: BettingRound | null = null
     private _forcedBets: ForcedBets
@@ -230,6 +230,11 @@ export default class Dealer {
             this._bettingRoundsCompleted = true
             // Now you call showdown()
         }
+    }
+
+    standUp(seat: number): void {
+        this._players[seat] = null
+        this._bettingRound?.standUp(seat)
     }
 
     winners(): [SeatIndex, Hand, HoleCards][][] {

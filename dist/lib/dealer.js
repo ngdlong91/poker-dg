@@ -231,6 +231,11 @@ var Dealer = /** @class */ (function () {
             // Now you call showdown()
         }
     };
+    Dealer.prototype.standUp = function (seat) {
+        var _a;
+        this._players[seat] = null;
+        (_a = this._bettingRound) === null || _a === void 0 ? void 0 : _a.standUp(seat);
+    };
     Dealer.prototype.winners = function () {
         assert_1.default(!this.handInProgress(), 'Hand must not be in progress');
         return this._winners;

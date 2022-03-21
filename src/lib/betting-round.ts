@@ -22,7 +22,7 @@ export class ActionRange {
 }
 
 export default class BettingRound {
-    private readonly _players: SeatArray
+    private _players: SeatArray
     private _round: Round
     private _biggestBet: Chips
     private _minRaise: Chips
@@ -109,6 +109,11 @@ export default class BettingRound {
             assert(action === Action.LEAVE)
             this._round.actionTaken(RoundAction.LEAVE)
         }
+    }
+
+    standUp(seat: number): void {
+        this._players[seat] = null
+        this._round.standUp(seat)
     }
 
     private isRaiseValid(bet: Chips): boolean {

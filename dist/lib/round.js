@@ -60,6 +60,10 @@ var Round = /** @class */ (function () {
         }
         this.incrementPlayer();
     };
+    Round.prototype.standUp = function (seat) {
+        this._activePlayers[seat] = false;
+        this._numActivePlayers = this._activePlayers.filter(function (player) { return !!player; }).length;
+    };
     Round.prototype.incrementPlayer = function () {
         do {
             ++this._playerToAct;

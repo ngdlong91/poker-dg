@@ -72,6 +72,11 @@ export default class Round {
         this.incrementPlayer();
     }
 
+    standUp(seat: number): void {
+        this._activePlayers[seat] = false;
+        this._numActivePlayers = this._activePlayers.filter(player => !!player).length;
+    }
+
     private incrementPlayer(): void {
         do {
             ++this._playerToAct;

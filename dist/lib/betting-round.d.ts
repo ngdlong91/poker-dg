@@ -13,7 +13,7 @@ export declare class ActionRange {
     constructor(canRaise: boolean, chipRange?: ChipRange);
 }
 export default class BettingRound {
-    private readonly _players;
+    private _players;
     private _round;
     private _biggestBet;
     private _minRaise;
@@ -28,5 +28,6 @@ export default class BettingRound {
     numActivePlayers(): number;
     legalActions(): ActionRange;
     actionTaken(action: Action, bet?: Chips): void;
+    standUp(seat: number): void;
     private isRaiseValid;
 }

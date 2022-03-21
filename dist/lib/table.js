@@ -243,6 +243,7 @@ var Table = /** @class */ (function () {
         this._staged[seat] = true;
     };
     Table.prototype.standUp = function (seat) {
+        var _a;
         assert_1.default(seat < this._numSeats && seat >= 0, 'Given seat index must be valid');
         assert_1.default(this._tablePlayers[seat] !== null, 'Given seat must be occupied');
         if (this.handInProgress()) {
@@ -250,18 +251,11 @@ var Table = /** @class */ (function () {
             assert_1.default(this._handPlayers !== undefined);
             if (seat === this.playerToAct()) {
                 this.actionTaken(dealer_1.Action.FOLD);
-                this._tablePlayers[seat] = null;
-                this._staged[seat] = true;
             }
-            else if (this._handPlayers[seat] !== null) {
-                this.setAutomaticAction(seat, AutomaticAction.FOLD);
-                this._tablePlayers[seat] = null;
-                this._staged[seat] = true;
-                if (this.singleActivePlayerRemaining()) {
-                    // We only need to take action for this one player, and the other automatic actions will unfold automatically.
-                    this.actPassively();
-                }
-            }
+            this._tablePlayers[seat] = null;
+            this._handPlayers[seat] = null;
+            this._staged[seat] = false;
+            (_a = this._dealer) === null || _a === void 0 ? void 0 : _a.standUp(seat);
         }
         else {
             this._tablePlayers[seat] = null;

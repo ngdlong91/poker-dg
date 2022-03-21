@@ -19,5 +19,6 @@ export default class Round {
     inProgress(): boolean;
     isContested(): boolean;
     actionTaken(action: Action): void;
+    standUp(seat: number): void;
     private incrementPlayer;
 }

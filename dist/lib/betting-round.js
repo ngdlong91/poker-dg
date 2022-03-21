@@ -120,6 +120,10 @@ var BettingRound = /** @class */ (function () {
             this._round.actionTaken(round_1.Action.LEAVE);
         }
     };
+    BettingRound.prototype.standUp = function (seat) {
+        this._players[seat] = null;
+        this._round.standUp(seat);
+    };
     BettingRound.prototype.isRaiseValid = function (bet) {
         var player = this._players[this._round.playerToAct()];
         assert_1.default(player !== null);

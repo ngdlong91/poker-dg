@@ -297,18 +297,11 @@ export default class Table {
             assert(this._handPlayers !== undefined)
             if (seat === this.playerToAct()) {
                 this.actionTaken(Action.FOLD)
-                this._tablePlayers[seat] = null
-                this._staged[seat] = true
-            } else if (this._handPlayers[seat] !== null) {
-                this.setAutomaticAction(seat, AutomaticAction.FOLD)
-                this._tablePlayers[seat] = null
-                this._staged[seat] = true
-
-                if (this.singleActivePlayerRemaining()) {
-                    // We only need to take action for this one player, and the other automatic actions will unfold automatically.
-                    this.actPassively()
-                }
             }
+            this._tablePlayers[seat] = null
+            this._handPlayers[seat] = null
+            this._staged[seat] = false
+            this._dealer?.standUp(seat)
         } else {
             this._tablePlayers[seat] = null
         }

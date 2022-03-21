@@ -24,7 +24,7 @@ export declare enum Action {
 export default class Dealer {
     private readonly _button;
     private readonly _communityCards;
-    private readonly _holeCards;
+    private _holeCards;
     private _players;
     private _bettingRound;
     private _forcedBets;
@@ -54,6 +54,7 @@ export default class Dealer {
     startHand(): void;
     actionTaken(action: Action, bet?: Chips): void;
     endBettingRound(): void;
+    standUp(seat: number): void;
     winners(): [SeatIndex, Hand, HoleCards][][];
     showdown(): void;
     private nextOrWrap;
