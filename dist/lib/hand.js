@@ -165,7 +165,7 @@ var Hand = /** @class */ (function () {
             first = last;
         }
     };
-    Hand._highLowHandEval = function (cards /* size = 7 */, isRiverCheck) {
+    Hand._highLowHandEval = function (cards, isRiverCheck) {
         if (isRiverCheck === void 0) { isRiverCheck = true; }
         if (isRiverCheck) {
             assert_1.default(cards.length === 7);
@@ -192,7 +192,7 @@ var Hand = /** @class */ (function () {
             ranking = HandRanking.FOUR_OF_A_KIND;
         }
         else if (count === 3) {
-            var tmp = Hand.nextRank(cards.slice(-4));
+            var tmp = Hand.nextRank(cards.slice(count - cards.length));
             if (tmp.count === 2) {
                 ranking = HandRanking.FULL_HOUSE;
             }
@@ -201,7 +201,7 @@ var Hand = /** @class */ (function () {
             }
         }
         else if (count === 2) {
-            var tmp = Hand.nextRank(cards.slice(-5));
+            var tmp = Hand.nextRank(cards.slice(count - cards.length));
             if (tmp.count === 2) {
                 ranking = HandRanking.TWO_PAIR;
             }

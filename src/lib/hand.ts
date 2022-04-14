@@ -159,7 +159,7 @@ export default class Hand {
         }
     }
 
-    static _highLowHandEval(cards: Card[] /* size = 7 */, isRiverCheck: boolean = true): Hand {
+    static _highLowHandEval(cards: Card[], isRiverCheck: boolean = true): Hand {
         if (isRiverCheck) {
             assert(cards.length === 7)
         } else {
@@ -189,14 +189,14 @@ export default class Hand {
             ]
             ranking = HandRanking.FOUR_OF_A_KIND
         } else if (count === 3) {
-            const tmp = Hand.nextRank(cards.slice(-4))
+            const tmp = Hand.nextRank(cards.slice(count - cards.length))
             if (tmp.count === 2) {
                 ranking = HandRanking.FULL_HOUSE
             } else {
                 ranking = HandRanking.THREE_OF_A_KIND
             }
         } else if (count === 2) {
-            const tmp = Hand.nextRank(cards.slice(-5))
+            const tmp = Hand.nextRank(cards.slice(count - cards.length))
             if (tmp.count === 2) {
                 ranking = HandRanking.TWO_PAIR
             } else {
