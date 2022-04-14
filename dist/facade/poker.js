@@ -18,6 +18,11 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // Facade for the Table class that confirms with the API of https://github.com/JankoDedic/poker.js
 var table_1 = __importStar(require("../lib/table"));
@@ -158,8 +163,9 @@ var Poker = /** @class */ (function () {
                 : cards.map(cardMapper);
         });
     };
-    Poker.prototype.table = function () {
-        return this._table;
+    Poker.prototype.playerCards = function (seat) {
+        var holeCards = this._table.holeCards()[seat] || [];
+        return __spreadArray(__spreadArray([], this._table.communityCards().cards()), holeCards);
     };
     Poker.prototype.actionTaken = function (action, betSize) {
         this._table.actionTaken(dealer_1.Action[action.toUpperCase()], betSize);

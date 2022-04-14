@@ -1,4 +1,3 @@
-import Table from '../lib/table';
 import ChipRange from '../lib/chip-range';
 import { SeatIndex } from 'types/seat-index';
 import { HandRanking } from '../lib/hand';
@@ -54,7 +53,7 @@ export default class Poker {
         chipRange?: ChipRange;
     };
     holeCards(): (Card[] | null)[];
-    table(): Table;
+    playerCards(seat: number): any;
     actionTaken(action: 'fold' | 'check' | 'call' | 'bet' | 'raise', betSize?: number): void;
     endBettingRound(): void;
     showdown(): void;

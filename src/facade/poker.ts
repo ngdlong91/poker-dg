@@ -164,8 +164,12 @@ export default class Poker {
         })
     }
 
-    table(): Table {
-        return this._table;
+    playerCards(seat: number): any {
+        const holeCards = this._table.holeCards()[seat] || [];
+        return [
+            ...this._table.communityCards().cards(),
+            ...holeCards
+        ];
     }
 
     actionTaken(action: 'fold' | 'check' | 'call' | 'bet' | 'raise', betSize?: number) {
