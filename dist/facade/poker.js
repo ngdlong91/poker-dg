@@ -158,6 +158,9 @@ var Poker = /** @class */ (function () {
                 : cards.map(cardMapper);
         });
     };
+    Poker.prototype.table = function () {
+        return this._table;
+    };
     Poker.prototype.actionTaken = function (action, betSize) {
         this._table.actionTaken(dealer_1.Action[action.toUpperCase()], betSize);
     };

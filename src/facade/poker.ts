@@ -164,6 +164,10 @@ export default class Poker {
         })
     }
 
+    table(): Table {
+        return this._table;
+    }
+
     actionTaken(action: 'fold' | 'check' | 'call' | 'bet' | 'raise', betSize?: number) {
         this._table.actionTaken(ActionFlag[action.toUpperCase()], betSize)
     }
