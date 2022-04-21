@@ -221,6 +221,10 @@ export default class Poker {
         this._table.setAutomaticAction(seatIndex, automaticAction)
     }
 
+    topUpChips(seatIndex: number, topUp: number): void {
+        this._table.seats()[seatIndex]?.addToStack(topUp)
+    }
+
     sitDown(seatIndex: number, buyIn: number): void {
         this._table.sitDown(seatIndex, buyIn)
     }

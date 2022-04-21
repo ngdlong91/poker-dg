@@ -208,6 +208,10 @@ var Poker = /** @class */ (function () {
         var automaticAction = action === null ? action : stringToAutomaticActionFlag(action);
         this._table.setAutomaticAction(seatIndex, automaticAction);
     };
+    Poker.prototype.topUpChips = function (seatIndex, topUp) {
+        var _a;
+        (_a = this._table.seats()[seatIndex]) === null || _a === void 0 ? void 0 : _a.addToStack(topUp);
+    };
     Poker.prototype.sitDown = function (seatIndex, buyIn) {
         this._table.sitDown(seatIndex, buyIn);
     };
