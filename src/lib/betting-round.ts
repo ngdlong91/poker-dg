@@ -1,9 +1,9 @@
 import assert from 'assert'
 import ChipRange from './chip-range'
-import { SeatIndex } from 'types/seat-index'
-import { Chips } from 'types/chips'
+import { SeatIndex } from '../types/seat-index'
+import { Chips } from '../types/chips'
 import Round, { Action as RoundAction } from './round'
-import { SeatArray } from 'types/seat-array'
+import { SeatArray } from '../types/seat-array'
 
 export enum Action {
     LEAVE,

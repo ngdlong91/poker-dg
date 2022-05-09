@@ -1,6 +1,6 @@
 import Pot from './pot'
-import { Chips } from 'types/chips'
-import { SeatArray } from 'types/seat-array'
+import { Chips } from '../types/chips'
+import { SeatArray } from '../types/seat-array'
 
 export default class PotManager {
     private readonly _pots: Pot[]

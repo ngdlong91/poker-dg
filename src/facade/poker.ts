@@ -4,7 +4,7 @@ import { RoundOfBetting } from '../lib/community-cards'
 import { CardRank, CardSuit } from '../lib/card'
 import { Action as ActionFlag } from '../lib/dealer'
 import ChipRange from '../lib/chip-range'
-import { SeatIndex } from 'types/seat-index'
+import { SeatIndex } from '../types/seat-index'
 import { HandRanking } from '../lib/hand'
 
 type Card = {

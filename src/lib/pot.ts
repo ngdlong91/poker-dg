@@ -1,7 +1,7 @@
 import assert from 'assert'
-import { SeatIndex } from 'types/seat-index'
-import { Chips } from 'types/chips'
-import { SeatArray } from 'types/seat-array'
+import { SeatIndex } from '../types/seat-index'
+import { Chips } from '../types/chips'
+import { SeatArray } from '../types/seat-array'
 import Player from './player'
 
 export default class Pot {

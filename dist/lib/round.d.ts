@@ -1,4 +1,4 @@
-import { SeatIndex } from 'types/seat-index';
+import { SeatIndex } from '../types/seat-index';
 export declare enum Action {
     LEAVE = 1,
     PASSIVE = 2,

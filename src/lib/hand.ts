@@ -2,7 +2,7 @@ import assert from 'assert'
 import Card, { CardRank } from './card'
 import { findIndexAdjacent, findMax, rotate, unique } from '../util/array'
 import CommunityCards from './community-cards'
-import { HoleCards } from 'types/hole-cards'
+import { HoleCards } from '../types/hole-cards'
 
 export enum HandRanking {
     HIGH_CARD,

@@ -1,6 +1,6 @@
 import Card, { CardRank } from './card';
 import CommunityCards from './community-cards';
-import { HoleCards } from 'types/hole-cards';
+import { HoleCards } from '../types/hole-cards';
 export declare enum HandRanking {
     HIGH_CARD = 0,
     PAIR = 1,

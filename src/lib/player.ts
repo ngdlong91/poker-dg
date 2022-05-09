@@ -1,5 +1,5 @@
 import assert from 'assert';
-import { Chips } from 'types/chips';
+import { Chips } from '../types/chips';
 import { isChips } from '../type-guards/chips'
 
 export default class Player {

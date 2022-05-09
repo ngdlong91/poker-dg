@@ -1,7 +1,7 @@
 import ChipRange from './chip-range';
-import { SeatIndex } from 'types/seat-index';
-import { Chips } from 'types/chips';
-import { SeatArray } from 'types/seat-array';
+import { SeatIndex } from '../types/seat-index';
+import { Chips } from '../types/chips';
+import { SeatArray } from '../types/seat-array';
 export declare enum Action {
     LEAVE = 0,
     MATCH = 1,

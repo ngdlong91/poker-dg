@@ -1,11 +1,11 @@
-import { SeatArray } from 'types/seat-array';
-import { SeatIndex } from 'types/seat-index';
+import { SeatArray } from '../types/seat-array';
+import { SeatIndex } from '../types/seat-index';
 import ChipRange from './chip-range';
-import { Chips } from 'types/chips';
-import { ForcedBets } from 'types/forced-bets';
+import { Chips } from '../types/chips';
+import { ForcedBets } from '../types/forced-bets';
 import Deck from './deck';
 import CommunityCards, { RoundOfBetting } from './community-cards';
-import { HoleCards } from 'types/hole-cards';
+import { HoleCards } from '../types/hole-cards';
 import Pot from './pot';
 import Hand from './hand';
 export declare class ActionRange {

@@ -1,4 +1,4 @@
-import { Chips } from 'types/chips';
+import { Chips } from '../types/chips';
 export default class Player {
     private _total;
     private _betSize;

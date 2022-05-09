@@ -1,5 +1,5 @@
 import ChipRange from '../lib/chip-range';
-import { SeatIndex } from 'types/seat-index';
+import { SeatIndex } from '../types/seat-index';
 import { HandRanking } from '../lib/hand';
 declare type Card = {
     rank: '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | 'T' | 'J' | 'Q' | 'K' | 'A';

@@ -1,11 +1,11 @@
-import { SeatArray } from 'types/seat-array';
-import { SeatIndex } from 'types/seat-index';
-import { ForcedBets } from 'types/forced-bets';
+import { SeatArray } from '../types/seat-array';
+import { SeatIndex } from '../types/seat-index';
+import { ForcedBets } from '../types/forced-bets';
 import CommunityCards, { RoundOfBetting } from './community-cards';
 import { Action, ActionRange } from './dealer';
 import Pot from './pot';
-import { HoleCards } from 'types/hole-cards';
-import { Chips } from 'types/chips';
+import { HoleCards } from '../types/hole-cards';
+import { Chips } from '../types/chips';
 import Hand from './hand';
 export declare enum AutomaticAction {
     FOLD = 1,

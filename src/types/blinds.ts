@@ -1,4 +1,4 @@
-import { Chips } from 'types/chips'
+import { Chips } from '../types/chips'
 
 export type Blinds = {
     small: Chips,
